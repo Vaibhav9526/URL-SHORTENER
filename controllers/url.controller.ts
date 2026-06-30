@@ -1,21 +1,14 @@
 import { nanoid } from "nanoid";
-import db from "../db/index.js";
-import { urlTable } from "../models/url.models.js";
+import db from "../db/index.ts";
+import urlTable from "../models/url.models.ts";
 import {
   urlGetBodySchema,
   urlPostRequestBodySchema,
-} from "../validators/url.validators.js";
+} from "../validators/url.validators.ts";
 import { and, eq } from "drizzle-orm";
+import type { Request, Response } from "express";
 
-/**
- *
- *
- * @param {import('express').Request} req
- * @param {import('express').Response} res
- *
- */
-
-export const postUrl = async (req, res) => {
+export const postUrl = async (req: Request, res: Response) => {
   const user = req.user;
   const validation = await urlPostRequestBodySchema.safeParseAsync(req.body);
 
@@ -50,7 +43,7 @@ export const postUrl = async (req, res) => {
   });
 };
 
-export const redirect = async (req, res) => {
+export const redirect = async (req: Request, res: Response) => {
   const user = req.user;
 
   const validation = await urlGetBodySchema.safeParseAsync(req.params);

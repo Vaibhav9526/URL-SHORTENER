@@ -1,13 +1,14 @@
-import { signupPostRequestSchema } from "../validators/users.validators.js";
-import { signInPostRequestScheme } from "../validators/users.validators.js";
-import db from "../db/index.js";
+import { signupPostRequestSchema } from "../validators/users.validators.ts";
+import { signInPostRequestScheme } from "../validators/users.validators.ts";
+import db from "../db/index.ts";
 import { eq } from "drizzle-orm";
-import usersTable from "../models/schema.models.js";
-import { hashPassword } from "../services/hash.service.js";
+import usersTable from "../models/schema.models.ts";
+import { hashPassword } from "../services/hash.service.ts";
 import { createHmac, randomBytes } from "node:crypto";
-import { jwtBind } from "../services/jwt.service.js";
+import { jwtBind } from "../services/jwt.service.ts";
+import type { Request, Response } from "express";
 
-export const signUp = async (req, res) => {
+export const signUp = async (req: Request, res: Response) => {
   const validation = await signupPostRequestSchema.safeParseAsync(req.body);
 
   if (validation.error) {
@@ -31,7 +32,7 @@ export const signUp = async (req, res) => {
   });
 };
 
-export const signIn = async (req, res) => {
+export const signIn = async (req: Request, res: Response) => {
   const validation = await signInPostRequestScheme.safeParseAsync(req.body);
 
   if (validation.error) {
@@ -63,7 +64,7 @@ export const signIn = async (req, res) => {
       error: `wrong password`,
     });
 
-  const payload = {
+  const payload: { id: string } = {
     id: data.id,
   };
   const token = jwtBind(payload);

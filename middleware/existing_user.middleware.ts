@@ -1,9 +1,14 @@
 import { eq } from "drizzle-orm";
-import db from "../db/index.js";
-import usersTable from "../models/schema.models.js";
-import { signupPostRequestSchema } from "../validators/users.validators.js";
+import db from "../db/index.ts";
+import usersTable from "../models/schema.models.ts";
+import { signupPostRequestSchema } from "../validators/users.validators.ts";
+import type { Request, Response, NextFunction } from "express";
 
-export const existingUserEmail = async (req, res, next) => {
+export const existingUserEmail = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
   const validators = await signupPostRequestSchema.safeParseAsync(req.body);
   if (validators.error)
     return res.status(400).json({

@@ -1,0 +1,167 @@
+{
+  "info": {
+    "_postman_id": "53d99423-f080-497d-8b1f-b944362a9576",
+    "name": "Url Shortener",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53086692",
+    "_collection_link": "https://go.postman.co/collection/53086692-53d99423-f080-497d-8b1f-b944362a9576?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "healthcheck",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/health",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "health"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Signup",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"firstname\" : \"John\",\r\n    \"lastname\" : \"Doe\",\r\n    \"email\" : \"JD@example.com\",\r\n    \"password\" : \"9526\" \r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/user/signup",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "user",
+            "signup"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "SignIn",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\" : \"JD@example.com\",\r\n    \"password\" : \"9526\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/user/signin",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "user",
+            "signin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "upload url with custom code",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{auth_secret_0gu1}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"url\" : \"https://youtube.com\",\r\n    \"code\" : \"yt\" \r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/url/shorten/",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "url",
+            "shorten",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "redirecting the user",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{supabase_service_role_api_key_0gu1}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/url/yt",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "url",
+            "yt"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": ""
+    },
+    {
+      "key": "auth_secret_0gu1",
+      "secret": true
+    },
+    {
+      "key": "supabase_service_role_api_key_0gu1",
+      "secret": true
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import { pgTable, uuid, varchar } from "drizzle-orm/pg-core";
-import { usersTable } from "./schema.models.js";
+import usersTable from "./schema.models.ts";
 
 const urlTable = pgTable("url", {
   id: uuid().defaultRandom().primaryKey(),
@@ -10,4 +10,4 @@ const urlTable = pgTable("url", {
   userId: uuid().references(() => usersTable.id),
 });
 
-export { urlTable };
+export default urlTable;
