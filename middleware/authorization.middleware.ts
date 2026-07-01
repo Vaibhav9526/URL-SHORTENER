@@ -2,11 +2,7 @@ import jwt from "jsonwebtoken";
 import type { Request, Response, NextFunction } from "express";
 import type IAuthUser from "../types/Auth.types.ts";
 
-export const authorization = (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) => {
+export const authorization = (req: Request, res: Response, next: NextFunction) => {
   try {
     const tokenHeader = req.headers["authorization"];
 

@@ -1,10 +1,7 @@
 import { nanoid } from "nanoid";
 import db from "../db/index.ts";
 import urlTable from "../models/url.models.ts";
-import {
-  urlGetBodySchema,
-  urlPostRequestBodySchema,
-} from "../validators/url.validators.ts";
+import { urlGetBodySchema, urlPostRequestBodySchema } from "../validators/url.validators.ts";
 import { and, eq } from "drizzle-orm";
 import type { Request, Response } from "express";
 
@@ -58,9 +55,7 @@ export const redirect = async (req: Request, res: Response) => {
   const [result] = await db
     .select()
     .from(urlTable)
-    .where((table) =>
-      and(eq(table.shortCode, code), eq(table.userId, user.id)),
-    );
+    .where((table) => and(eq(table.shortCode, code), eq(table.userId, user.id)));
 
   if (!result) return res.status(400).json("result error");
 

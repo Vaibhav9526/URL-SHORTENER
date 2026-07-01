@@ -16,7 +16,7 @@ class ApiError<T = unknown> extends Error implements IApiError<T> {
     message = "Something went wrong",
     errors: unknown[] = [],
     data: T | null = null,
-    stack?: string,
+    stack?: string
   ) {
     super(message);
 

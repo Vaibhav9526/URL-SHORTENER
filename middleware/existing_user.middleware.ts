@@ -4,11 +4,7 @@ import usersTable from "../models/schema.models.ts";
 import { signupPostRequestSchema } from "../validators/users.validators.ts";
 import type { Request, Response, NextFunction } from "express";
 
-export const existingUserEmail = async (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) => {
+export const existingUserEmail = async (req: Request, res: Response, next: NextFunction) => {
   const validators = await signupPostRequestSchema.safeParseAsync(req.body);
   if (validators.error)
     return res.status(400).json({

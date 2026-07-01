@@ -15,13 +15,9 @@
         "url": {
           "raw": "http://localhost:8000/health",
           "protocol": "http",
-          "host": [
-            "localhost"
-          ],
+          "host": ["localhost"],
           "port": "8000",
-          "path": [
-            "health"
-          ]
+          "path": ["health"]
         }
       },
       "response": []
@@ -42,13 +38,8 @@
         },
         "url": {
           "raw": "{{baseUrl}}/user/signup",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "user",
-            "signup"
-          ]
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "signup"]
         }
       },
       "response": []
@@ -72,13 +63,8 @@
         },
         "url": {
           "raw": "{{baseUrl}}/user/signin",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "user",
-            "signin"
-          ]
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "signin"]
         }
       },
       "response": []
@@ -109,14 +95,8 @@
         },
         "url": {
           "raw": "{{baseUrl}}/url/shorten/",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "url",
-            "shorten",
-            ""
-          ]
+          "host": ["{{baseUrl}}"],
+          "path": ["url", "shorten", ""]
         }
       },
       "response": []
@@ -138,13 +118,8 @@
         "header": [],
         "url": {
           "raw": "{{baseUrl}}/url/yt",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "url",
-            "yt"
-          ]
+          "host": ["{{baseUrl}}"],
+          "path": ["url", "yt"]
         }
       },
       "response": []
